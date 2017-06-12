@@ -1,6 +1,6 @@
 # manytracks
 
-A small JBrowse plugin to initialize many tracks given an array of URLs, in order to alleviate the annoying-nesss of complicated setups
+A small JBrowse plugin to initialize many tracks given an array of URLs to make long redundant track configs less redundant!
 
 
 ## Example configuation
