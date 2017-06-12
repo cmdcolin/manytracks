@@ -1,13 +1,11 @@
 define([
     'dojo/_base/declare',
     'dojo/_base/lang',
-    'dojo/Deferred',
     'JBrowse/Plugin'
 ],
 function (
     declare,
     lang,
-    Deferred,
     JBrowsePlugin
 ) {
     return declare(JBrowsePlugin, {
@@ -27,26 +25,21 @@ function (
                 });
             });
 
-            // do anything you need to initialize your plugin here
             console.log('ManyTracks plugin starting');
         },
 
         createManyTracks: function(conf) {
-            var d = new Deferred();
             var browser = this.browser;
-            var storeConf = {
+            var storeConf = lang.mixin(lang.clone(conf), {
                 browser: browser,
                 refSeq: browser.refSeq,
                 type: conf.storeClass,
-            };
-            var storeName = browser.addStoreConfig(undefined, conf);
+                baseUrl: browser.config.baseUrl+browser.config.dataRoot+'/'
+            });
+
+            var storeName = browser.addStoreConfig(undefined, storeConf);
             storeConf.name = storeName;
             browser.getStore(storeName, function(store) {
-                d.resolve(true);
-            });
-            d.promise.then(function(){
-                console.log('hi',storeName)
-                
                 var myTrackConfig = {
                     type: conf.type,
                     label: conf.label,
