@@ -21,6 +21,11 @@ A small JBrowse plugin to initialize many tracks given an array of URLs, in orde
 
 The plugin will initiate a track for each file in the array of files in `urlTemplates`. This generally works best with a long list of simple track types like BAM, VCF.gz, or BigWig
 
+## Screenshot
+
+![](img/1.png)
+
+Simple example of the manytracks configuration, with two manytracks config blocks (one with variance band added, one without)
 
 ## Install
 
