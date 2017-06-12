@@ -40,13 +40,11 @@ function (
             var storeName = browser.addStoreConfig(undefined, storeConf);
             storeConf.name = storeName;
             browser.getStore(storeName, function(store) {
-                var myTrackConfig = {
-                    type: conf.type,
-                    label: conf.label,
+                var trackConfig = lang.mixin(conf, {
                     store: storeName
-                };
+                });
                 // send out a message about how the user wants to create the new tracks
-                browser.publish( '/jbrowse/v1/v/tracks/new', [myTrackConfig] );
+                browser.publish( '/jbrowse/v1/v/tracks/new', [trackConfig] );
             });
         }
     });
