@@ -1,0 +1,22 @@
+{
+  "name": "manytracks",
+  "version": "0.2.0",
+  "description": "A small JBrowse plugin to initialize many tracks given an array of URLs to make long redundant track configs less redundant!",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmdcolin/manytracks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cmdcolin/manytracks/issues"
+  },
+  "homepage": "https://github.com/cmdcolin/manytracks#readme"
+}

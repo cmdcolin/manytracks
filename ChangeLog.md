@@ -1,3 +1,7 @@
+# Version 0.3.0
+
+- Add license
+
 # Version 0.2.0
 
 - Change loading strategy to hook into config loader instead of using the publish mechanism
