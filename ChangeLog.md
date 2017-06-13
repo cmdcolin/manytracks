@@ -1,6 +1,7 @@
 # Version 0.3.0
 
 - Add license
+- Fix loading tracks via the &tracks= bar
 
 # Version 0.2.0
 

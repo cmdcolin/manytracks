@@ -34,6 +34,10 @@ function (
             var newconf =  adapter.regularizeTrackConfigs(conf)
             lang.mixin(browser.config.stores, newconf.stores)
             browser.config.tracks = browser.config.tracks.concat(newconf.tracks)
+            for(var i = 0; i < newconf.tracks.length; i++) {
+                var tr = newconf.tracks[i]
+                browser.trackConfigsByName[tr.label] = tr;
+            }
 
             console.log('ManyTracks plugin starting');
         }

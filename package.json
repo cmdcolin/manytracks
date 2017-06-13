@@ -1,6 +1,6 @@
 {
   "name": "manytracks",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A small JBrowse plugin to initialize many tracks given an array of URLs to make long redundant track configs less redundant!",
   "main": "index.js",
   "directories": {
