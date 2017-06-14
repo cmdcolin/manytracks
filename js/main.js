@@ -2,14 +2,12 @@ define([
     'dojo/_base/declare',
     'dojo/_base/lang',
     'JBrowse/Plugin',
-    'JBrowse/Digest/Crc32',
     'JBrowse/ConfigAdaptor/JB_json_v1'
 ],
 function (
     declare,
     lang,
     JBrowsePlugin,
-    digest,
     Config
 ) {
     return declare(JBrowsePlugin, {
