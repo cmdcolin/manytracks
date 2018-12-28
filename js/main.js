@@ -13,29 +13,22 @@ function (
     return declare(JBrowsePlugin, {
         constructor: function (args) {
             console.log('ManyTracks plugin starting');
-
-            var browser = this.browser = args.browser;
-            var conf = {
-                tracks: []
-            };
-            Object.keys(browser.config.manytracks).forEach(function (key) {
-                var many = browser.config.manytracks[key];
-                for (var j = 0; j < many.urlTemplates.length; j++) {
-                    conf.tracks.push(lang.mixin(lang.clone(many), {
-                        urlTemplate: many.urlTemplates[j],
-                        urlTemplates: null,
-                        baseUrl: browser.config.baseUrl + browser.config.dataRoot + '/',
-                        label: key + '_' + many.urlTemplates[j]
-                    }));
-                }
-            });
-            var adapter = new Config();
-            var newconf =  adapter.regularizeTrackConfigs(conf);
-            lang.mixin(browser.config.stores, newconf.stores);
-            browser.config.tracks = browser.config.tracks.concat(newconf.tracks);
-            newconf.tracks.forEach(function (tr) {
-                browser.trackConfigsByName[tr.label] = tr;
-            });
+            var browser = args.browser;
+            if(browser.config.manytracks) {
+                var arrs = Object.entries(browser.config.manytracks).map(([k, v]) => {
+                    var base = v.baseUrl || (browser.config.baseUrl + browser.config.dataRoot + '/')
+                    var files = v.urlTemplates
+                    v.urlTemplates = null
+                    return files.map(s => Object.assign({}, v, { urlTemplate: s, label: v.label + '_' + s.split('/').pop() }))
+                })
+                var adapter = new Config();
+                var newconf = adapter.regularizeTrackConfigs({ tracks: arrs.flat() });
+                lang.mixin(browser.config.stores, newconf.stores);
+                browser.config.tracks = browser.config.tracks.concat(newconf.tracks);
+                newconf.tracks.forEach(function (tr) {
+                    browser.trackConfigsByName[tr.label] = tr;
+                });
+            }
         }
     });
 });
